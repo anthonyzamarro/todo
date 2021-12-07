@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import TextField from '@mui/material/TextField';
 
 interface Props {
     text: string
 }
 
 const Todo: React.FC<Props> = ({ text }) => {
+    const [todoText, updateTodoText] = useState<String>(text);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        updateTodoText(e.target.value);
+    }
+
     return (
         <>
-            <p> {text} </p>
+            {
+                text !== "" && 
+                <TextField 
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}  
+                    value={todoText} 
+                /> 
+            }
         </>
     )
 }
