@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 
 interface Props {
     todo: React.ReactNode 
@@ -13,11 +15,11 @@ const TodoList: React.FC<Props> = ({ todo }) => {
 
     return (
         <>
-          <ul> 
+          <List> 
             { todoArray && todoArray.map((todoItem, index) => {
-              return <li key={index}>{todoItem}</li>
+              return <ListItem disablePadding key={index}>{todoItem}</ListItem>
             })}
-          </ul>  
+          </List>  
         </>
     )
 }
