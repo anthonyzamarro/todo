@@ -8,14 +8,13 @@ interface Props {
 }
 
 const SearchBox: React.FC<Props> = ({ addTodo }) => {
-    const [todoText, updateTodoText] = useState('');
+    const [todoText, updateTodoText] = useState<string>('');
 
     const handleChange = (text: string) => {
         updateTodoText(text);
     }
 
     const handleClick = () => {
-        console.log('handleClick');
         addTodo(todoText);
     }
 

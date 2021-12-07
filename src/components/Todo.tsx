@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Todo: React.FC<Props> = ({ text }) => {
-    const [todoText, updateTodoText] = useState<String>(text);
+    const [todoText, updateTodoText] = useState<string>(text);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateTodoText(e.target.value);
