@@ -4,18 +4,20 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 interface Props {
-    addTodo: (text: string) => void
+    addTodo: (text: string, id: number) => void
 }
 
 const SearchBox: React.FC<Props> = ({ addTodo }) => {
     const [todoText, updateTodoText] = useState<string>('');
+    const [todoId, updateTodoId] = useState<number>(0);
 
     const handleChange = (text: string) => {
         updateTodoText(text);
+        updateTodoId(todoId + 1)
     }
     
     const handleClick = () => {
-        addTodo(todoText);
+        addTodo(todoText, todoId);
         updateTodoText('');
     }
 
@@ -26,8 +28,7 @@ const SearchBox: React.FC<Props> = ({ addTodo }) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 m: '2em'
-            }}
-        >
+            }}>
             <TextField 
                 id="standard-basic" 
                 label="Standard" 
@@ -36,14 +37,12 @@ const SearchBox: React.FC<Props> = ({ addTodo }) => {
                 sx={{
                     mr: '16px'
                 }}
-                value={todoText}
-            />
+                value={todoText}/>
             <Button 
                 variant="contained"
                 size="small"
                 sx={{alignSelf: 'flex-end'}}
-                onClick={handleClick}
-            >
+                onClick={handleClick}>
                 Add Todo
             </Button>
         </Box>

@@ -1,61 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { Button, Container } from '@mui/material';
 import Todo from './Todo';
 
 interface Props {
-  text: string,
-  id: number
+  todos: object[],
+  deleteTodo: (id: number) => void
 }
 
-const TodoList: React.FC<Props> = (props: any) => {
-    const [todoArray, updateTodoArray] = useState<Object[]>([]);
+const TodoList: React.FC<Props> = ({ todos, deleteTodo }) => {
+  const handleDelete = (id: number) => {
+    deleteTodo(id);
+  }
 
-    const handleDelete = (id: number) => {
-      updateTodoArray(todoArray.filter((t: any, i) => t.id !== id));
-    }
-    
-    useEffect(() => {
-      updateTodoArray(todoArray => [...todoArray, props]);
-    }, [props]);
-
-    return (
-        <Container>
-          <List>
-            { todoArray.map((todoItem: any, index) => {
-              console.log(todoItem);
-              return (
-                index > 0 ?
-                <ListItem
-                    sx={{
-                    display: 'flex',
-                    mb: '12px',
-                    width: '100%'
-                  }}
-                  disablePadding
-                  key={todoItem.id}
-                >
-                <Todo 
-                  text={todoItem.text}
-                  id={todoItem.id}
-                />
-                <Button 
-                  variant="contained"
-                  size="small"
-                  sx={{
-                    ml: '12px'
-                  }}
-                  onClick={e => handleDelete(todoItem.id)}
-                > X </Button>
-                </ListItem> 
-                : 
-                <div key={-1}></div>
-                )
-            }) }
-          </List>  
-        </Container>
-    )
+  return (
+    <Container>
+      <List>
+        {todos.map((todo: any) => {
+          return <ListItem
+                sx={{
+                display: 'flex',
+                mb: '12px',
+                width: '100%'
+              }}
+              disablePadding
+              key={todo.id}
+            >
+              <Todo 
+                text={todo.text}
+                id={todo.id}
+              />
+              <Button 
+              variant="contained"
+              size="small"
+              sx={{
+                ml: '12px'
+              }}
+              onClick={e => handleDelete(todo.id)}
+            > X </Button>
+            </ListItem> 
+        })}
+      </List>  
+    </Container>
+  )
 }
 
 export default TodoList;

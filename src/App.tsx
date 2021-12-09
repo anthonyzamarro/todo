@@ -3,20 +3,22 @@ import SearchBox from './components/SearchBox';
 import TodoList from './components/TodoList';
 
 const App: React.FC = () => {
-  const [todoText,updateTodoText] = useState<string>('');
-  const [todoId, updateTodoId] = useState<number>(0);
+  const [todoList, updateTodoList] = useState<Object[]>([]);
 
-  const updateText = (t: string) => {
-    updateTodoText(t);
-    updateTodoId(todoId + 1);
+  const addNewTodo = (newTask: string, todoId: number) => {
+    updateTodoList(todoList => [...todoList, {text: newTask, id: todoId}])
+  }
+
+  const deleteTodo = (id: number) => {
+    updateTodoList(todoList.filter((t: any, i) => t.id !== id));
   }
 
   return (
     <div className="App">
-      <SearchBox addTodo={(e: string) => updateText(e)}/>
+      <SearchBox addTodo={(task: string, id: number) => addNewTodo(task, id)}/>
         <TodoList 
-          text={todoText}
-          id={todoId}
+          todos={todoList}
+          deleteTodo={(id: number) => deleteTodo(id)}
         />
     </div>
   );

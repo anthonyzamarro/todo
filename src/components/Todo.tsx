@@ -23,20 +23,20 @@ const Todo: React.FC<Props> = ({ text, id }) => {
         <>
             {
                 <div>
-                <Button 
-                    variant="contained"
-                    size="small"
-                    sx={{
-                      mr: '12px'
-                    }}
-                    onClick={e => handleComplete()}
-                  > Complete </Button>
-                <TextField 
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}  
-                    value={todoText}
-                    data-id={id}
-                    disabled={todoComplete}
-                /> 
+                    <Button 
+                        variant="contained"
+                        size="small"
+                        sx={{
+                        mr: '12px'
+                        }}
+                        onClick={e => handleComplete()}
+                    > Complete </Button>
+                    <TextField 
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}  
+                        value={todoText}
+                        data-id={id}
+                        disabled={todoComplete}
+                    /> 
                 </div>
             }
         </>
