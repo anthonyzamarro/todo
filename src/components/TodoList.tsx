@@ -36,23 +36,21 @@ const TodoList: React.FC<Props> = (props: any) => {
                   disablePadding
                   key={todoItem.id}
                 >
-                <Button 
-                  variant="contained"
-                  size="small"
-                  sx={{
-                    mr: '12px'
-                  }}
-                  onClick={e => handleDelete(todoItem.id)}
-                >
-                X
-                </Button>
                 <Todo 
                   text={todoItem.text}
                   id={todoItem.id}
                 />
+                <Button 
+                  variant="contained"
+                  size="small"
+                  sx={{
+                    ml: '12px'
+                  }}
+                  onClick={e => handleDelete(todoItem.id)}
+                > X </Button>
                 </ListItem> 
                 : 
-                <div key={0}></div>
+                <div key={-1}></div>
                 )
             }) }
           </List>  

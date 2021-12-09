@@ -5,8 +5,8 @@ import Todo from './components/Todo';
 import TodoList from './components/TodoList';
 
 const App: React.FC = () => {
-  const [todoText,updateTodoText] = useState('');
-  const [todoId, updateTodoId] = useState(0);
+  const [todoText,updateTodoText] = useState<string>('');
+  const [todoId, updateTodoId] = useState<number>(0);
 
   const updateText = (t: string) => {
     updateTodoText(t);
