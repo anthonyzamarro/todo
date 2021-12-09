@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 
 interface Props {
-    text: string
+    text: string,
+    id: number
 }
 
-const Todo: React.FC<Props> = ({ text }) => {
+const Todo: React.FC<Props> = ({ text, id }) => {
     const [todoText, updateTodoText] = useState<string>(text);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +19,8 @@ const Todo: React.FC<Props> = ({ text }) => {
                 text !== "" && 
                 <TextField 
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}  
-                    value={todoText} 
+                    value={todoText}
+                    data-id={id}
                 /> 
             }
         </>

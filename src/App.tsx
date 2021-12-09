@@ -5,18 +5,21 @@ import Todo from './components/Todo';
 import TodoList from './components/TodoList';
 
 const App: React.FC = () => {
-  const [userText,updateUserText] = useState('');
+  const [todoText,updateTodoText] = useState('');
+  const [todoId, updateTodoId] = useState(0);
 
   const updateText = (t: string) => {
-    // console.log('updateText', t);
-    updateUserText(t);
+    updateTodoText(t);
+    updateTodoId(todoId + 1);
   }
 
   return (
     <div className="App">
       <SearchBox addTodo={(e: string) => updateText(e)}/>
-      {/* <Todo text={userText}/> */}
-      <TodoList todo={<Todo text={userText} />}/>
+        <TodoList 
+          text={todoText}
+          id={todoId}
+        />
     </div>
   );
 }

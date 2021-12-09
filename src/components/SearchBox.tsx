@@ -13,9 +13,10 @@ const SearchBox: React.FC<Props> = ({ addTodo }) => {
     const handleChange = (text: string) => {
         updateTodoText(text);
     }
-
+    
     const handleClick = () => {
         addTodo(todoText);
+        updateTodoText('');
     }
 
     return (
@@ -35,6 +36,7 @@ const SearchBox: React.FC<Props> = ({ addTodo }) => {
                 sx={{
                     mr: '16px'
                 }}
+                value={todoText}
             />
             <Button 
                 variant="contained"
