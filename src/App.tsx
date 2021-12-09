@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
 import SearchBox from './components/SearchBox';
-import Todo from './components/Todo';
 import TodoList from './components/TodoList';
 
 const App: React.FC = () => {
